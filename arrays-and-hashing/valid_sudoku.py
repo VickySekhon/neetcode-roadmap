@@ -84,3 +84,45 @@ board = [["1","2",".",".","3",".",".",".","."],
           [".",".",".",".","8",".",".","7","9"]]
 
 print(is_valid_sudoku(board))
+
+
+import collections
+def is_valid_sudoku2(board):
+     """
+     Check if a given Sudoku board is valid.
+
+     Args:
+          board (list): A 9x9 Sudoku board represented as a list of lists.
+
+     Returns:
+          bool: True if the Sudoku board is valid, False otherwise.
+     """
+     # Implementation code goes here
+     rows = collections.defaultdict(set) # dictionary (keys: tuples, integers, strings) => set (values: set)
+     cols = collections.defaultdict(set) 
+     subGrids = collections.defaultdict(set)
+     
+     for rowIndx in range(9):
+          for colIndx in range(9):
+               num = board[rowIndx][colIndx]
+               if (num != "."): # empty space
+                    if (num in rows[rowIndx] or
+                        num in cols[colIndx] or
+                        num in subGrids[(rowIndx//3, colIndx//3)]):
+                         return False
+               rows[rowIndx].add(num)     
+               cols[colIndx].add(num)     
+               subGrids[(rowIndx//3, colIndx//3)].add(num)     
+     return True
+
+board = [["1","2",".",".","3",".",".",".","."],
+          ["4",".",".","5",".",".",".",".","."],
+          [".","9","8",".",".",".",".","2","3"],
+          ["5",".",".",".","6",".",".",".","4"],
+          [".",".",".","8",".","3",".",".","5"],
+          ["7",".",".",".","2",".",".",".","6"],
+          [".",".",".",".",".",".","2",".","."],
+          [".",".",".","4","1","9",".",".","8"],
+          [".",".",".",".","8",".",".","7","9"]]
+
+print(is_valid_sudoku2(board))
