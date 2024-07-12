@@ -1,7 +1,7 @@
 # neetcode-roadmap
 
 ## Problems Completed ✅:  
-  ### ```Arrays and Hashing: 8```
+  ### ```Arrays and Hashing: 9```
   ### ```Stack: 0```
   ### ```Two Pointers: 0```
   ### ```Linked List: 0```
