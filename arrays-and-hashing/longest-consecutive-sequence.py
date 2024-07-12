@@ -51,4 +51,15 @@ def longest_consecutive_sequence2(nums):
           4
      """
      # Implementation code goes here
-     return
+     numSet = set(nums) # eliminate duplicates
+     maxSeqLen = 0
+     
+     for i in numSet:
+          if not i-1 in numSet: # start of a sequence
+               currSeqLen = 1
+               while i+currSeqLen in numSet:
+                    currSeqLen += 1
+               maxSeqLen = max(maxSeqLen, currSeqLen)
+     return maxSeqLen
+
+print(longest_consecutive_sequence2([0,3,7,2,5,8,4,6,0,1]))
