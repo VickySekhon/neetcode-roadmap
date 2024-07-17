@@ -2,7 +2,7 @@
 
 ## Problems Completed ✅:  
   ### ```Arrays and Hashing: 9```
-  ### ```Stack: 4```
+  ### ```Stack: 5```
   ### ```Two Pointers: 0```
   ### ```Linked List: 0```
   ### ```Binary Search: 0```
