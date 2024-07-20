@@ -84,7 +84,7 @@ def daily_temperatures3(temperatures):
      result = [0] * len(temperatures) # initialize result to be 0
      
      for i in range(len(temperatures)):
-          futureTemp = temperatures[i]
+          futureTemp = temperatures[i] # represents a future temperature after the current temperature
           
           while stack and futureTemp > stack[-1][0]: # temperature higher than the one on the top of the stack is found
                currentTemp, stackIndx = stack.pop()
