@@ -103,7 +103,7 @@ def productExceptSelf4(nums):
           prefix[i] = prefix[i-1] * nums[i-1]
           
      # postfix
-     for i in range(len(nums) - 2, -1, -1):
+     for i in range(len(nums) - 2, -1, -1): # -1 because stop is not inclusive
           postfix[i] = postfix[i+1] * nums[i+1]
      
      result = []
@@ -114,4 +114,4 @@ def productExceptSelf4(nums):
 
      return result
 
-print("**CORRECT**: ", productExceptSelf4([-1,0,1,2,3]))
+print("**CORRECT**: ", productExceptSelf4([-1,0,1,2,3])) 

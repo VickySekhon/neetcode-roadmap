@@ -110,9 +110,9 @@ def is_valid_sudoku2(board):
                         num in cols[colIndx] or
                         num in subGrids[(rowIndx//3, colIndx//3)]):
                          return False
-               rows[rowIndx].add(num)     
-               cols[colIndx].add(num)     
-               subGrids[(rowIndx//3, colIndx//3)].add(num)     
+                    rows[rowIndx].add(num)     
+                    cols[colIndx].add(num)     
+                    subGrids[(rowIndx//3, colIndx//3)].add(num)
      return True
 
 board = [["1","2",".",".","3",".",".",".","."],

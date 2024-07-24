@@ -12,7 +12,7 @@ def longest_consecutive_sequence(nums):
           >>> longest_consecutive_sequence([100, 4, 200, 1, 3, 2])
           4
      """
-     # Implementation code goes here
+     # TODO: O(nlog(n))
      nums.sort()
 
      arr = []
@@ -50,16 +50,18 @@ def longest_consecutive_sequence2(nums):
           >>> longest_consecutive_sequence([100, 4, 200, 1, 3, 2])
           4
      """
-     # Implementation code goes here
+     # TODO: O(n)
      numSet = set(nums) # eliminate duplicates
      maxSeqLen = 0
      
      for i in numSet:
           if not i-1 in numSet: # start of a sequence
-               currSeqLen = 1
+               currSeqLen = 1 # one number currently in the sequence
                while i+currSeqLen in numSet:
                     currSeqLen += 1
                maxSeqLen = max(maxSeqLen, currSeqLen)
      return maxSeqLen
 
 print(longest_consecutive_sequence2([0,3,7,2,5,8,4,6,0,1]))
+
+# create a set from the nums, check if a num is a start of a new sequence (it-1 is not in the hashMap), if it is then set up a temp counter = 1 and while i +counter in hashMap, count+=1
