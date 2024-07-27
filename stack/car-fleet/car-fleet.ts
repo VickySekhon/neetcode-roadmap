@@ -41,4 +41,5 @@ function carFleet(target: number, position: number[], speed: number[]) {
      return stack.length;
 }
 
+
 console.log(carFleet(20,[6,2,17], [3,9,2]))
