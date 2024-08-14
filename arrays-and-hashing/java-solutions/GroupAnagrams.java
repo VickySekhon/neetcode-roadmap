@@ -6,11 +6,11 @@ public class GroupAnagrams {
           return;
      }
 
-     public static ArrayList<ArrayList<String>> groupedAnagrams(String[] words) {
+     public static List<List<String>> groupedAnagrams(String[] strs) {
           
           HashMap<String, ArrayList<String>> anagrams = new HashMap<String, ArrayList<String>>();
 
-          for (String word : Arrays.asList(words)) {
+          for (String word : Arrays.asList(strs)) {
                char[] key = word.toCharArray();
                Arrays.sort(key);
                
@@ -22,7 +22,7 @@ public class GroupAnagrams {
                }
           }
 
-          ArrayList<ArrayList<String>> grouped = new ArrayList<ArrayList<String>>();
+          List<List<String>> grouped = new ArrayList<List<String>>();
 
           for (ArrayList<String> group : anagrams.values()) {
                grouped.add(group);
