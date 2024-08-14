@@ -61,3 +61,40 @@ s = "cat"
 t = "car"
 
 print(validAnagram(s,t))
+
+
+
+def validAnagram2(s, t):
+     """
+     Checks if two strings, s and t, are anagrams of each other.
+
+     An anagram is a word or phrase formed by rearranging the letters of another word or phrase.
+     In this case, we are checking if the characters in s can be rearranged to form t.
+
+     Args:
+          s (str): The first string.
+          t (str): The second string.
+
+     Returns:
+          bool: True if s and t are anagrams, False otherwise.
+     """
+     if len(s) != len(t):
+          return False
+     
+     map1 = {} # s
+     map2 = {} # t
+     
+     for i in range(len(s)):
+          map1[s[i]] = 1 + map1.get(s[i], 0)
+          map2[t[i]] = 1 + map2.get(t[i], 0)
+     
+     for i in map1:
+          if map1[i] != map2.get(i, 0):
+               return False
+          
+     return True
+     
+s = "catt"
+t = "carr"
+
+print(validAnagram2(s,t))

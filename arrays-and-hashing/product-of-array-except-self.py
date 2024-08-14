@@ -115,3 +115,34 @@ def productExceptSelf4(nums):
      return result
 
 print("**CORRECT**: ", productExceptSelf4([-1,0,1,2,3])) 
+
+
+
+def productExceptSelf5(nums):
+     """
+     Calculates the product of array except self.
+
+     Args:
+     nums (int[]): The input array of integers.
+
+     Returns:
+     int[]: The output array where each element is the product of all elements in nums except the corresponding element.
+     """
+     prefix = [1] * len(nums)
+     postfix = [1] * len(nums)
+     
+     
+     for i in range(1, len(nums)):
+          prefix[i] = prefix[i-1] * nums[i-1]
+          
+     for i in range(len(nums)-2, -1, -1):
+          postfix[i] = postfix[i+1] * nums[i+1]
+          
+     i = 0
+     result = [1] * len(nums)
+     for i in range(len(postfix)):
+          result[i] *= postfix[i] * prefix[i]
+     
+     return result
+
+print(productExceptSelf5([-1,0,1,2,3]))

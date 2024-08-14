@@ -26,9 +26,6 @@ print(contains_duplicate([1,2,3,3]))
 
 
 
-
-
-
 def validAnagram(s, t):
      """
      Checks if two strings, s and t, are anagrams of each other.
@@ -176,7 +173,7 @@ def k_frequent_elements(nums, k):
 
 nums = [1,2,2,3,3,3,3]
 k = 2
-print(k_frequent_elements(nums,k))
+print("k frequent elements", k_frequent_elements(nums,k))
 
 
 
@@ -300,3 +297,55 @@ def longest_consecutive_sequence2(nums):
 
 
 print(longest_consecutive_sequence2([0,3,7,2,5,8,4,6,0,1]))
+
+
+
+
+
+def group_anagrams(words):
+     
+     hashmap = {} # map the sorted version of a anagram to the the anagrams in the words array
+     
+     for i in range(len(words)):
+          word = "".join(sorted(words[i]))
+     
+          if (word in hashmap):
+               # append the regular version of the word rather than the sorted
+               hashmap[word].append(words[i])
+          else:
+               hashmap[word] = [words[i]]
+     
+     final = []
+     
+     for i in hashmap.values():
+          print(final.append(i))
+          
+     return final
+
+print("this the one", group_anagrams(["eat","tea","tan","ate","nat","bat"]))
+
+
+
+def valid_anagram(s, t):
+     
+     if len(s) != len(t):
+          return False
+     
+     hashSetS = {}
+     hashSetT = {}
+     
+     # same length so compare char by char for the same frequencies
+     for i in range(len(s)):
+          hashSetS[s[i]] = 1 + hashSetS.get(s[i], 0)
+          hashSetT[t[i]] = 1 + hashSetT.get(t[i], 0)
+     
+     
+     for j in hashSetT:
+          if (hashSetS[j] != hashSetT.get(j, 0)):
+               return False
+     
+     return True
+
+print(valid_anagram("app", "pap"))
+
+print("no")

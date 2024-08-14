@@ -115,7 +115,7 @@ def is_valid_sudoku2(board):
                     subGrids[(rowIndx//3, colIndx//3)].add(num)
      return True
 
-board = [["1","2",".",".","3",".",".",".","."],
+board  = [["1","2",".",".","3",".",".",".","."],
           ["4",".",".","5",".",".",".",".","."],
           [".","9","8",".",".",".",".","2","3"],
           ["5",".",".",".","6",".",".",".","4"],
@@ -126,3 +126,45 @@ board = [["1","2",".",".","3",".",".",".","."],
           [".",".",".",".","8",".",".","7","9"]]
 
 print(is_valid_sudoku2(board))
+
+
+import collections
+def is_valid_sudoku3(board):
+     """
+     Check if a given Sudoku board is valid.
+
+     Args:
+          board (list): A 9x9 Sudoku board represented as a list of lists.
+
+     Returns:
+          bool: True if the Sudoku board is valid, False otherwise.
+     """
+     rows = collections.defaultdict(set)
+     cols = collections.defaultdict(set)
+     subgrids = collections.defaultdict(set)
+     
+     for rowIndx in range(len(board)):
+          for colIndx in range(len(board)):
+               num = board[rowIndx][colIndx]
+               if (num != "."):
+                    if (num in rows or
+                        num in cols or
+                        num in subgrids):
+                         return False
+                    rows[rowIndx].add(num)
+                    cols[colIndx].add(num)
+                    subgrids[(rowIndx//3, colIndx//3)].add(num)
+     return True
+     
+
+board  = [["1","2",".",".","3",".",".",".","."],
+          ["4",".",".","5",".",".",".",".","."],
+          [".","9","8",".",".",".",".","2","3"],
+          ["5",".",".",".","6",".",".",".","4"],
+          [".",".",".","8",".","3",".",".","5"],
+          ["7",".",".",".","2",".",".",".","6"],
+          [".",".",".",".",".",".","2",".","."],
+          [".",".",".","4","1","9",".",".","8"],
+          [".",".",".",".","8",".",".","7","9"]]
+
+print(is_valid_sudoku3(board))

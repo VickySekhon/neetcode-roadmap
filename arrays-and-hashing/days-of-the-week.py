@@ -23,3 +23,36 @@ def get_day_of_week(S: str, K: int) -> str:
 
 # 4 weeks pass by and the extra day = +1
 print(get_day_of_week("mon", 29))
+
+
+
+
+
+
+
+
+
+
+def get_day_of_week2(S: str, K: int) -> str:
+    """
+    Returns the day of the week for a given start day and # 
+    of days afterwards.
+
+    Parameters:
+    S (str): The start day.
+    K (int): # of days after start day.
+
+    Returns:
+    str: The day of the week after K days.
+    """
+    
+    daysOfTheWeek = ["mon", "tue", "wed", "thr", "fri", "sat", "sun"]
+    
+    startIndex = daysOfTheWeek.index(S)
+    
+    endIndex = (startIndex + K) % 7 # wrap around the days of the week
+    
+    return daysOfTheWeek[endIndex]
+    
+
+print("Second", get_day_of_week2("mon", 29))    
