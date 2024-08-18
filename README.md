@@ -9,6 +9,6 @@
   ### ```Sliding Window: 0```
 
 
-*Days off: 24!!!!* I need to get back to it!
+*Days off: 25!!!!* I need to get back to it!
 
 I'm back at it, let's gooooo!
