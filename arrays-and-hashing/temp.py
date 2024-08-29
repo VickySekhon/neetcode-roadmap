@@ -349,3 +349,33 @@ def valid_anagram(s, t):
 print(valid_anagram("app", "pap"))
 
 print("no")
+
+
+def longest_consecutive_sequence3(nums):
+     """
+     Finds the length of the longest consecutive sequence in a given list of integers.
+
+     Args:
+          nums (List[int]): A list of integers.
+
+     Returns:
+          int: The length of the longest consecutive sequence.
+
+     Example:
+          >>> longest_consecutive_sequence([100, 4, 200, 1, 3, 2])
+          4
+     """
+     unique = list(set(nums))
+     unique.sort()
+     max_seq_len = 0
+     for i in range(len(nums)):
+          if (not nums[i]-1 in unique): # start of a new sequence
+               curr_seq_len = 1
+               while (nums[i]+curr_seq_len in unique): # start of a new sequence
+                    curr_seq_len+=1
+          max_seq_len = max(max_seq_len, curr_seq_len)
+          
+     return max_seq_len
+
+print(longest_consecutive_sequence3([100, 4, 200, 1, 3, 2]))
+          
