@@ -1,5 +1,10 @@
 # neetcode-roadmap
 
+![Screenshot 2024-08-27 223917](https://github.com/user-attachments/assets/19eeb4ac-ce0f-4ee4-848e-b4808423c1c6)
+
+## Roadmap 🚀:
+<img width="500px" src="https://github.com/user-attachments/assets/916a986c-b94d-4909-b851-3edf4304fbc1"/>
+
 ## Problems Completed ✅:  
   ### ```Arrays and Hashing: 9```
   ### ```Stack: 5```
@@ -8,7 +13,6 @@
   ### ```Binary Search: 0```
   ### ```Sliding Window: 0```
 
+*Days off: 34!!!!!* I need to get back to it!
 
-*Days off: 22!!!!* I need to get back to it!
-
-I'm back at it, let's gooooo!
+I'm slacking ughhhhhhhhhhhhhhhhh
