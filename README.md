@@ -14,7 +14,5 @@
   ### ```Sliding Window: 0```
 
 *Days off: 42!!!!!*
-After 38 days I am finally back. 
-Consistency is King.
 
-Streak: 1 day(s)
+Streak: 0 day(s)
