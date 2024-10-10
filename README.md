@@ -13,8 +13,6 @@
   ### ```Binary Search: 0```
   ### ```Sliding Window: 0```
 
-*Days off: 34!!!!!*
-After 34 days I am finally back. 
-Consistency is King.
+*Days off: 61!!!!!*
 
-Streak: 1 day(s)
+Streak: 0 day(s)
