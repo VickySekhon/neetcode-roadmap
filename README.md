@@ -15,4 +15,4 @@
 
 *Days off: 69!!!!!*
 
-Streak: 0 day(s)
+Streak: 0 day(s
