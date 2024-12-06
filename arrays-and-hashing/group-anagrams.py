@@ -19,9 +19,10 @@ def group_anagrams(words):
                hashMap[sortedStr].append(i)
 
      # append all remaining values
-     for j in hashMap.values():
-          result.append(j)
-     
+     if hashMap.values():
+          for j in hashMap.values():
+               result.append(j)
+          
      return result
 
 
