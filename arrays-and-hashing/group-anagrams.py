@@ -17,7 +17,8 @@ def group_anagrams(words):
                hashMap[sortedStr] = [i]
           else:
                hashMap[sortedStr].append(i)
-          
+
+     # append all remaining values
      for j in hashMap.values():
           result.append(j)
      
