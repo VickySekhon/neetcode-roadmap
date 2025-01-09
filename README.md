@@ -13,6 +13,6 @@
   ### ```Binary Search: 0```
   ### ```Sliding Window: 0```
 
-*Days off: 125!!!!*
+*Days off: 126!!!!*
 
 Streak: 0 day(s)
