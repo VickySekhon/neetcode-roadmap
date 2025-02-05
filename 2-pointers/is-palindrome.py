@@ -20,3 +20,30 @@ def isPalindrome(s: str):
 
 s = "A man, a plan, a canal: Panama"
 print(isPalindrome(s))
+
+
+def isPalindrome(s: str):
+     l = 0
+     r = len(s)-1
+     while l < r:
+          while not s[l].isalnum() and l < r:
+               l += 1
+          while not s[r].isalnum() and r > l:
+               r -= 1
+          s_l = convertConstantLowercase(s[l])
+          s_r = convertConstantLowercase(s[r])
+          if s_l != s_r:
+               return False
+          l += 1
+          r -= 1
+     return True
+
+def convertConstantLowercase(c: str):
+     unicode = ord(c)
+     if (unicode >= 65 and unicode <= 90):
+          return chr(unicode + 32)
+     
+     return c
+
+s = "A man, a plan, a canal: Panama"
+print(isPalindrome(s))
