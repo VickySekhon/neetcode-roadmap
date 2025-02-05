@@ -15,4 +15,4 @@
 
 *Days off: 0!!!!*
 
-Streak: 1 day(s)
+Streak: 2 day(s)
