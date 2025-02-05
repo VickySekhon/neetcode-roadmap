@@ -1,6 +1,5 @@
-
+# Θ(n), Θ(n) space as well
 def isPalindrome(s: str):
-
      s = "".join(s.split(" ")).lower()
      n_s = ""
      for char in s:
@@ -22,6 +21,7 @@ s = "A man, a plan, a canal: Panama"
 print(isPalindrome(s))
 
 
+# Θ(n)
 def isPalindrome(s: str):
      l = 0
      r = len(s)-1
