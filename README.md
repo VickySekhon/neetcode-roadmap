@@ -15,4 +15,4 @@
 
 *Days off: 4!!!!*
 
-Current Highest Streak: 2 day(s)
+Highest streak: 2 day(s)
