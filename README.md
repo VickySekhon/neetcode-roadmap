@@ -13,7 +13,7 @@
   ### ```Binary Search: 0```
   ### ```Sliding Window: 0```
 
-## Days off!: 1 month 2 days
+## Days off!: 1 month 3 days
 
 
 ## Highest streak: 2 day(s)
