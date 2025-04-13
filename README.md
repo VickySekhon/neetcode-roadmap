@@ -16,5 +16,4 @@
 ## Days off!: 1 month 5 days
 
 
-
 ## Highest streak: 2 day(s)
