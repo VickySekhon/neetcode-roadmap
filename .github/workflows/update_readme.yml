@@ -21,9 +21,13 @@ jobs:
       - name: Run update script
         run: python .github/scripts/update_readme.py
 
-      - name: Commit changes
+      - name: Commit and push if changed
         run: |
-          git config user.name "github-actions[bot]"
+          git config user.name "github-actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git diff --cached --quiet || (git commit -m "🔄 Daily increment of days off" && git push)
+          git commit -m "🔄 Daily increment of days off" || exit 0
+          git push
+        env:
+          GIT_TOKEN: ${{ secrets.GH_PAT }}
+        continue-on-error: true
