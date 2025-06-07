@@ -25,8 +25,8 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          git config user.name "github-actions"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "VickySekhon"
+          git config user.email "your-github-email@example.com"
           git add README.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
