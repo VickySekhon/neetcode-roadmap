@@ -13,6 +13,6 @@
   ### ```Binary Search: 0```
   ### ```Sliding Window: 0```
 
-## Days off!: 8 months 15 days I have to get back to it : (
+## Days off!: 8 months 16 days I have to get back to it : (
 
 ## Highest streak: 2 day(s)
