@@ -24,16 +24,16 @@ def searchMatrix(matrix: list[list[int]], target: int) -> bool:
                     hi_col = mid_col-1
           
           # Search the right
-          if mid_col > ((len(matrix[mid_row])-1)//2):
+          if target > matrix[mid_row][mid_col]:
                low_row = mid_row+1
           else:
-               hi_row = mid_row-
+               hi_row = mid_row-1
      
      return False
 
-# matrix = [[1,2,4,8],[10,11,12,13],[14,20,30,40]]
-# target = 15
-matrix=[[1],[3]]
-target=3
+matrix = [[1,2,4,8],[10,11,12,13],[14,20,30,40]]
+target = 0
+# matrix=[[1],[3]]
+# target=3
 
 print(searchMatrix(matrix, target))
