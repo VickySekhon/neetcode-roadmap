@@ -96,3 +96,17 @@ def longest_consecutive_sequence3(nums):
 #O(N) space, set in worst case can take up n slots assuming each num in nums is distinct
 #O(N) complexity, only entering O(N) for select few nums and not repeating <= (KEY)
 print(longest_consecutive_sequence3(nums = [9,1,4,7,3,-1,0,5,8,-1,6]))
+
+
+def longest_consecutive_sequence(nums):
+     longest = 0
+     for i in nums:
+          seq = 1
+          if not seq-1 in nums:
+               while i+seq in nums:
+                    seq += 1
+               longest = max(seq, longest)
+     
+     return longest
+
+print(longest_consecutive_sequence([1,2,3,6,7]))

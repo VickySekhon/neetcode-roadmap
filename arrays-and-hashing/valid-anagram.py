@@ -98,3 +98,23 @@ s = "catt"
 t = "carr"
 
 print(validAnagram2(s,t))
+
+def valid_anagram(s1, s2):
+     if s1 == "" and s2 == "":  return True
+     
+     s1_freq, s2_freq = {}, {}
+     for letter1, letter2 in zip(s1, s2):
+          s1_freq[letter1] = 1 + s1_freq.get(letter1, 0)
+          s2_freq[letter2] = 1 + s2_freq.get(letter2, 0)
+          # if not s1_freq.get(letter1):
+          #      s1_freq[letter1] = 1
+          # else:
+          #      s1_freq[letter1] += 1
+          # if not s2_freq.get(letter2):
+          #      s2_freq[letter2] = 1
+          # else:
+          #      s2_freq[letter2] += 1
+     
+     return s1_freq.items() == s2_freq.items()
+
+print(valid_anagram("cat", "tac"))

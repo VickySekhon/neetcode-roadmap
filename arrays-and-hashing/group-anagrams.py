@@ -26,3 +26,15 @@ def group_anagrams(words):
 
 
 print(group_anagrams(["eat","tea","tan","ate","nat","bat"]))
+
+
+def group_anagrams_2(words):
+     mappings = {}
+     for i in words:
+          key = "".join(sorted(i))
+          if not mappings.get(key): mappings[key] = []
+          mappings[key].append(i)
+     
+     return list(mappings.values())
+
+print(group_anagrams_2(["eat","tea","tan","ate","nat","bat"]))
