@@ -41,12 +41,12 @@ class Solution:
                     l += 1
           return None
      
-sol = Solution()
-numbers = [-1,0,1,2,-1,-4]
-#numbers = [-1,0,1,2,-1,-4,-2,-3,3,0,4]
-print(sol.threeSum(numbers))
+# sol = Solution()
 # numbers = [-1,0,1,2,-1,-4]
-# [-4, -1, -1, 0, 1, 2]
+# #numbers = [-1,0,1,2,-1,-4,-2,-3,3,0,4]
+# print(sol.threeSum(numbers))
+# # numbers = [-1,0,1,2,-1,-4]
+# # [-4, -1, -1, 0, 1, 2]
 
 
 class Solution:
@@ -92,9 +92,60 @@ class Solution:
                     l += 1
           return None
      
+# sol = Solution()
+# #numbers = [-1,0,1,2,-1,-4]
+# numbers = [-1,0,1,2,-1,-4,-2,-3,3,0,4]
+# print(sol.threeSum(numbers))
+# # numbers = [-1,0,1,2,-1,-4]
+# # [-4, -1, -1, 0, 1, 2]
+
+class Solution:
+     def threeSum(self, nums):
+          # triplets = []
+          # nums.sort()
+
+          # # [-4, -1, -1, 0, 1, 2]
+          # l, r = 0, len(nums) - 1
+          # while l < r:
+          nums.sort()
+          triplets = []
+          pairings_we_have = set()
+          
+          for i, num in enumerate(nums):
+               values_we_need = self.twoSum(nums, -num, i)
+               
+               if values_we_need is None: continue
+               
+               num_2, num_3 = values_we_need
+               pairing = [num, num_2, num_3]
+               
+               ord_sum = self.representation(pairing)
+               
+               if ord_sum not in pairings_we_have:
+                    triplets.append(pairing)
+                    pairings_we_have.add(ord_sum)
+               
+          return triplets
+
+     def representation(self, nums):
+          return hash(tuple(sorted(nums)))
+     
+
+     def twoSum(self, nums, target, used_index):
+          l, r = 0, len(nums)-1
+
+          while l < r:
+               if nums[l] + nums[r] == target and l != used_index and r != used_index:
+                    return [nums[l],nums[r]]
+               if nums[l] + nums[r] > target:
+                    r -= 1
+               else:
+                    l += 1
+          return
+
 sol = Solution()
-#numbers = [-1,0,1,2,-1,-4]
-numbers = [-1,0,1,2,-1,-4,-2,-3,3,0,4]
-print(sol.threeSum(numbers))
-# numbers = [-1,0,1,2,-1,-4]
-# [-4, -1, -1, 0, 1, 2]
+x = sol.threeSum([-1,0,1,2,-1,-4])
+print(x)
+x2 = sol.threeSum([0,0,0])
+print(x2)
+          
