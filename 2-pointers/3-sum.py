@@ -179,3 +179,15 @@ class Solution:
                          l += 1
                          
           return triplets
+     
+# 3 ideas:
+
+# - process each unique value (-5 ONCE not twice)
+# - any possible pairs would be made by the leftmost value, so no need to check pairs prior to a pair
+# - (addition to point above), 2sum should only check to the right of the value, l = i + 1, r = leftmost
+# - find all possible pairs, given a value
+# - (addition to point above), skip duplicate values because of hypothesis below
+
+# hypothesis: for the same number, nothing else can be used
+
+# *in a nutshell, 1. don't check anything to the left since it would already have been check, 2. skip duplicates since they only equal one value*
