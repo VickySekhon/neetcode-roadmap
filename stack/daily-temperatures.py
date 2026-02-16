@@ -95,3 +95,65 @@ def daily_temperatures3(temperatures):
      return result
 
 print(daily_temperatures2([21,22,23]))
+
+
+
+
+# Example 1:
+
+# Input: temperatures = [73,74,75,71,69,72,76,73]
+# Output: [1,1,4,2,1,1,0,0]
+# Example 2:
+
+"""
+temperatures = [0,0,0,0,0,0,0,0], stack = [73], 73
+temperatures = [1,0,0,0,0,0,0,0], stack = [74], 74, 1 pop, temperatures[?] = 1
+temperatures = [1,1,0,0,0,0,0,0], stack = [75], 75, 1 pop, temperatures[?] = 1
+temperatures = [1,1,0,0,0,0,0,0], stack = [75, 71], 71
+temperatures = [1,1,0,0,0,0,0,0], stack = [75, 71, 69], 69
+temperatures = [1,1,0,0,0,0,0,0], stack = [75, 71, 69, 72], 72
+temperatures = [1,1,0,0,0,0,0,0], stack = [76], 76, 4 pops, temperatures[?] = 4
+
+stack, answers = [temperatures[0]], []
+for i in range(1, len(temperatures)):
+     temp = temperatures[i]
+     distance_to_high_temp = 0
+     while stack and temp > stack[-1]:
+          stack.pop()
+          distance_to_high_temp += 1
+     answers.append(distance_to_high_temp)
+     stack.append(temp)
+return answers
+"""
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        # temp = [0] * len(temperatures) 
+        # for i, val in enumerate(temperatures):
+        #     j = i+1
+        #     while j < len(temperatures) and temperatures[j] <= val:
+        #         j += 1
+        #     if j < len(temperatures):
+        #         temp[i] = j-i
+        # return temp
+        # stack, answers = [temperatures[0]], []
+        # for i in range(1, len(temperatures)):
+        #     temp = temperatures[i]
+        #     distance_to_high_temp = 0
+        #     while stack and temp > stack[-1]:
+        #         stack.pop()
+        #         distance_to_high_temp += 1
+        #     answers.append(distance_to_high_temp)
+        #     stack.append(temp)
+        # return answers
+
+        answers = [0]*len(temperatures)
+        stack = []
+        for current_index, current in enumerate(temperatures):
+            
+            while stack and current > list(stack[-1].keys())[0]: # current > top of stack
+                temp_entry = stack.pop()
+                temp_index = list(temp_entry.values())[0]
+                answers[temp_index] = current_index - temp_index # positions away the value is
+            
+            stack.append({current: current_index})
+        return answers
