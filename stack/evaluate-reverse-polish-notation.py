@@ -59,3 +59,30 @@ def evaluate_reverse_polish_notation2(tokens):
                stack.append(int(i))
      return stack[0]
 print(evaluate_reverse_polish_notation2(tokens = ["10","6","9","3", "+", "-", "/"]))
+
+
+
+class Solution(object):
+    def evalRPN(self, tokens):
+        """
+        :type tokens: List[str]
+        :rtype: int
+        """
+        
+        stack = []
+        for tok in tokens:
+            if tok.isdigit() or (tok[0] == "-" and len(tok) > 1):
+                stack.append(tok)
+            else:
+                tok_2, tok_1 = int(stack.pop()), int(stack.pop())
+                res = 0
+                if tok == "+": res = tok_1+tok_2
+                if tok == "-": res = tok_1-tok_2
+                if tok == "*": res = tok_1*tok_2
+                if tok == "/": res = int(tok_1/tok_2)
+                stack.append(str(res))
+        return int(stack[-1])
+   
+sol = Solution()
+x = sol.evalRPN(["10","6","9","3","+","-11","*","/","*","17","+","5","+"])
+print(f"Latest:\n{x}\n{type(x)}")

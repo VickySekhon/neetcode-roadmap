@@ -19,10 +19,10 @@ class MinStack:
           minVal = min(self.stack)
           return minVal
      
-stk = MinStack()
-stk.push(3)
-stk.push(2)
-print(stk.getMin())
+# stk = MinStack()
+# stk.push(3)
+# stk.push(2)
+# print(stk.getMin())
 
 # TODO: solution #2: O(1) pseudo-stack for minimum values, topmost element is the smallest value in the stack
 class MinStack2: 
@@ -46,12 +46,12 @@ class MinStack2:
      def getMin(self):
           return self.minStack[-1]
      
-stack = MinStack2()
-stack.push(5)
-stack.push(2)
-stack.push(7)
-print(stack.top())
-print(stack.getMin())
+# stack = MinStack2()
+# stack.push(5)
+# stack.push(2)
+# stack.push(7)
+# print(stack.top())
+# print(stack.getMin())
 
 # TODO: linked node implementation using two stacks
 class LinkedNode:
@@ -61,8 +61,8 @@ class LinkedNode:
 
 class LinkedStack:
      def __init__(self, top):
-          self.top = top
-          self.minTop = top
+          self.top = LinkedNode(top)
+          self.minTop = LinkedNode(top)
      
      def push(self, value):
           # regular stack
@@ -70,33 +70,33 @@ class LinkedStack:
           self.top = newNode
           
           # min stack 
-          newMinNode = LinkedNode(min(value, self.minTop.value) if not self.minTop is None else value, self.minTop)
-          self.minTop = newMinNode
+          if self.minTop is not None:
+               self.minTop = LinkedNode(min(value, self.minTop.value), self.minTop)
+          else:
+               self.minTop = LinkedNode(value)
      
      def pop(self)-> int:
           # regular stack
-          temp = self.top.value
           self.top = self.top.next
-          self.top.next = None
           
           # min stack
           self.minTop = self.minTop.next
-          self.minTop.next = None
-          
-          return temp # return the popped value from the actual stack
 
-     def topOf(self)->int:
+     def get_top(self)->int:
           return self.top.value
      
      def getMin(self)->int:
           return self.minTop.value
           
           
-node = LinkedNode(2)
-linkStack = LinkedStack(node)
-linkStack.push(-1)
+linkStack = LinkedStack(2)
 linkStack.push(2)
 linkStack.push(1)
 linkStack.push(0)
+linkStack.push(-1)
+linkStack.push(3)
 
 print(linkStack.getMin())
+print(linkStack.get_top())
+linkStack.pop()
+print(linkStack.get_top())
