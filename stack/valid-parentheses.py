@@ -26,3 +26,28 @@ def is_valid_parentheses(s):
      return  len(stack) == 0
 
 print(is_valid_parentheses("[(])"))
+
+
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        stack = []
+        bracket_map = {
+            ")": "(",
+            "]": "[",
+            "}": "{"
+        }
+        open_brackets = bracket_map.values()
+        for char in s:
+            if char in open_brackets:
+                stack.append(char)
+            else:
+                if stack:
+                    if bracket_map[char] != stack[-1]: return False
+                    stack.pop()
+                else:
+                    return False
+        return len(stack) == 0
