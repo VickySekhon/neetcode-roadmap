@@ -37,3 +37,30 @@ target = 0
 # target=3
 
 print(searchMatrix(matrix, target))
+
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        l_row, hi_row = 0, len(matrix)-1
+        m = (len(matrix[0])) // 2
+        while l_row <= hi_row:
+            m_row = (l_row+hi_row)//2
+            l_col, hi_col, m_col = 0, len(matrix[m_row])-1, 0
+            
+            while l_col <= hi_col:
+                m_col = (l_col+hi_col)//2
+                if matrix[m_row][m_col] == target: return True
+                if matrix[m_row][m_col] > target: hi_col = m_col-1
+                else: l_col = m_col + 1
+
+            # handle case where sub-arrays consist of 1 element
+            # ..can't really find the middle here, have to do comparison explicitly 
+          #   if m_col == m:`
+          #       if target < matrix[m_row][m_col]: hi_row-=1
+          #       else: l_row += 1
+          #   elif m_col < m: hi_row -= 1
+          #   else: l_row += 1`
+            if target < matrix[m_row][m_col]: hi_row = m_row - 1
+            else: l_row = m_row + 1
+        return False
+                
