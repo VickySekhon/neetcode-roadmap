@@ -17,8 +17,8 @@ def isPalindrome(s: str):
           r -= 1
      return True
 
-s = "A man, a plan, a canal: Panama"
-print(isPalindrome(s))
+# s = "A man, a plan, a canal: Panama"
+# print(isPalindrome(s))
 
 
 # Θ(n)
@@ -45,5 +45,27 @@ def convertConstantLowercase(c: str):
      
      return c
 
-s = "A man, a plan, a canal: Panama"
-print(isPalindrome(s))
+# s = "A man, a plan, a canal: Panama"
+# print(isPalindrome(s))
+
+
+class Solution(object):
+
+    def isPalindrome(self, s):
+        s = s.lower()
+        new_s = ""
+        for i in s:
+             if i.isalnum(): new_s += i
+        
+        l, r = 0, len(new_s) - 1
+        while l < r:
+             if new_s[l] != new_s[r]: return False
+             l += 1
+             r -= 1
+        
+        return True
+
+sol = Solution()
+#x = sol.isPalindrome("A man, a plan, a canal: Panama")
+x = sol.isPalindrome("0P")
+print(x)
