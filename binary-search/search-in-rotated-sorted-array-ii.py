@@ -1,5 +1,5 @@
 class Solution:
-    def search(self, nums: list[int], target: int) -> int:
+    def search(self, nums: list[int], target: int) -> bool:
         l, r = 0, len(nums)-1
 
         while l < r:
@@ -11,9 +11,9 @@ class Solution:
 
         partition_1 = self.binary_search(nums, target, 0, l-1)
         partition_2 = self.binary_search(nums, target, l, len(nums)-1)
-        if partition_1 != -1:
-            return partition_1
-        return partition_2
+        if partition_1 != -1 or partition_2 != -1:
+            return True
+        return False
             
             
     def binary_search(self, nums, target, l, r):
@@ -29,8 +29,3 @@ class Solution:
                 r = mid - 1
         return -1
    
-sol = Solution()
-nums=[1,2,3,4,5,6]
-target=1
-x = sol.search(nums, target)
-print(x)
