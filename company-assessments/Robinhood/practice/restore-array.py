@@ -15,6 +15,40 @@ def restore_array(pairs):
 
      The reversed array [2, 4, 1, 5, 3] is also considered a valid answer.
      """
+#      graph = {}
+#      for pair in pairs:
+#           a, b = pair
+#           if a not in graph:
+#                graph[a] = [b]
+#           else:
+#                graph[a].append(b)
+#           if b not in graph:
+#                graph[b] = [a]
+#           else:
+#                graph[b].append(a)
+#      print(graph)
+     
+#      start_node = None
+#      for node, edges in graph.items():
+#           degree = len(edges)
+#           if degree == 1: 
+#                start_node = node
+#                break
+     
+#      visited = []
+#      original_arr = dfs(graph, visited, node=start_node)
+     
+#      print(start_node)
+#      return original_arr
+
+# def dfs(graph, visited, node):
+#      visited.append(node)
+#      for neighbor in graph[node]:
+#           if not neighbor in visited:
+#                dfs(graph, visited, neighbor)
+#      return visited
+
+     #Construct graph
      graph = {}
      for pair in pairs:
           a, b = pair
@@ -27,26 +61,37 @@ def restore_array(pairs):
           else:
                graph[b].append(a)
      print(graph)
-     
-     start_node = None
-     for node, edges in graph.items():
-          degree = len(edges)
-          if degree == 1: 
-               start_node = node
+     start = None
+     for k, v in graph.items():
+          if len(v) == 1:
+               start = k
                break
      
-     visited = []
-     original_arr = dfs(graph, visited, node=start_node)
-     
-     print(start_node)
-     return original_arr
-
-def dfs(graph, visited, node):
-     visited.append(node)
-     for neighbor in graph[node]:
-          if not neighbor in visited:
-               dfs(graph, visited, neighbor)
+     visited = [start]
+     stack = [start]
+     while len(stack) > 0:
+          node = stack.pop()
+          for neighbor in graph[node]:
+               if neighbor not in visited:
+                    visited.append(neighbor)
+                    stack.append(neighbor)
      return visited
+     # nodes = [i for pair in pairs for i in pair]
+     # for node in nodes:
+     #      if not graph.get(node):
+     #           graph[node] = []
+     # for pair in pairs:
+     #      a, b = pair
+     #      graph[a].append(b)
+     #      graph[b].append(a)
+     
+     # f
+     # degree_1 = [i[0] for i in graph.items() if len(i[1]) == 1]
+     
+
+
+
+
 # def dfs(graph, start_node):
 #      visited = []
 #      while len(visited) < len(graph):
