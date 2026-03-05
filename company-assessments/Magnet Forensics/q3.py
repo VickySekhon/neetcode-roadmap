@@ -73,10 +73,54 @@ class Linked_List:
      #      return slow
      
      
+     # def merge_sort(self, node):
+     #      if not node or not node.next:
+     #           return node
+          
+     #      left = node
+     #      right = self.get_mid(left)
+     #      tmp = right.next
+     #      right.next = None
+     #      right = tmp
+          
+     #      left = self.merge_sort(left)
+     #      right = self.merge_sort(right)
+     #      head = self.merge(left, right)
+     #      self.head = head
+     #      return head
+     
+     # def merge(self, right, left):
+     #      new_head = Node() # need to reference the start 
+     #      curr = new_head
+     #      while left and right:
+     #           if left.value <= right.value:
+     #                new_head.next = left
+     #                left = left.next
+     #           else:
+     #                new_head.next = right
+     #                right = right.next
+     #           new_head = new_head.next
+     #      if left:
+     #           new_head.next = left
+     #      else:
+     #           new_head.next = right
+     #      return curr.next
+               
+     
+     # def get_mid(self, head):
+     #      fast = head
+     #      slow = head
+     #      while fast and fast.next:
+     #           fast = fast.next.next
+     #           if not fast:
+     #                break
+     #           slow = slow.next
+     #      return slow
+
      def merge_sort(self, node):
           if not node or not node.next:
                return node
-          
+
           left = node
           right = self.get_mid(left)
           tmp = right.next
@@ -88,35 +132,47 @@ class Linked_List:
           head = self.merge(left, right)
           self.head = head
           return head
-     
-     def merge(self, right, left):
-          new_head = Node() # need to reference the start 
-          curr = new_head
+          
+     def merge(self, left, right):
+          node = Node()
+          head = node
+          
           while left and right:
                if left.value <= right.value:
-                    new_head.next = left
+                    node.next = left
                     left = left.next
                else:
-                    new_head.next = right
+                    node.next = right
                     right = right.next
-               new_head = new_head.next
+               node = node.next
           if left:
-               new_head.next = left
+               node.next = left
           else:
-               new_head.next = right
-          return curr.next
-               
-     
+               node.next = right
+          return head.next
+          
      def get_mid(self, head):
           fast = head
           slow = head
+          
           while fast and fast.next:
                fast = fast.next.next
                if not fast:
                     break
                slow = slow.next
+               
           return slow
 
+     def reverse(self):
+          prev = None
+          curr = self.head
+          while curr:
+               _next = curr.next
+               curr.next = prev
+               prev = curr
+               curr = _next
+          self.head = prev
+          return
 
 ll = Linked_List(5)
 ll.insert(2)
@@ -127,6 +183,9 @@ ll.insert(3)
 print(ll)
 
 x = ll.merge_sort(ll.head)
+
+print(ll)
+ll.reverse()
 print(ll)
 
 # x = ll.getMid()
