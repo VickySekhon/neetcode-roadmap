@@ -103,43 +103,88 @@ def solve(families: List[str], sizes: List[int]) -> str:
                     right = families[i+1]
                     right_size = sizes[i+1]
                
-               if left is not None and culture != left and right is not None and culture != right:
+               if left is not None and culture != left and size > left_size:
                     # left needs to be removed
-                    if (size > left_size and size > right_size) or size > left_size:
-                         families.pop(i-1)
-                         eaten_bacteria = sizes.pop(i-1)
-                         i -= 1
-                         sizes[i] += eaten_bacteria
-                         eaten = True
+                    families.pop(i-1)
+                    eaten_bacteria = sizes.pop(i-1)
+                    i -= 1
+                    sizes[i] += eaten_bacteria
+                    eaten = True
                     # right needs to be removed
-                    elif size > right_size:
-                         families.pop(i+1)
-                         eaten_bacteria = sizes.pop(i+1)
-                         sizes[i] += eaten_bacteria 
-                         eaten = True
-               elif left and culture != left:
-                    # left needs to be removed
-                    if size > left_size:
-                         families.pop(i-1)
-                         eaten_bacteria = sizes.pop(i-1)
-                         i -= 1
-                         sizes[i] += eaten_bacteria
-                         eaten = True
-               elif right and culture != right:
-                    # right needs to be removed
-                    if size > right_size:
-                         families.pop(i+1)
-                         eaten_bacteria = sizes.pop(i+1)
-                         sizes[i] += eaten_bacteria
-                         eaten = True
-               
-               if not eaten:
+               elif right is not None and culture != right and size > right_size:
+                    families.pop(i+1)
+                    eaten_bacteria = sizes.pop(i+1)
+                    sizes[i] += eaten_bacteria 
+                    eaten = True
+                    # nothing was eaten
+               else:
                     i+=1
                
      max_culture_i = sizes.index(max(sizes))
      max_size = sizes[max_culture_i]
      max_culture = families[max_culture_i]
      return f"{max_culture} {max_size}"
+     # eaten = True
+     # while eaten:
+     #      eaten = False
+     #      i = 0
+     #      while len(families) > 1 and i < len(families):
+     #           culture = families[i]
+     #           size = sizes[i]
+               
+     #           if i == 0:
+     #                left = None
+     #                left_size = None 
+     #                right = families[i+1]
+     #                right_size = sizes[i+1]
+     #           elif i == len(families)-1:
+     #                right = None
+     #                right_size = None
+     #                left = families[i-1]
+     #                left_size = sizes[i-1]
+     #           else:
+     #                left = families[i-1]
+     #                left_size = sizes[i-1]
+     #                right = families[i+1]
+     #                right_size = sizes[i+1]
+               
+     #           if left is not None and culture != left and right is not None and culture != right:
+     #                # left needs to be removed
+     #                if (size > left_size and size > right_size) or size > left_size:
+     #                     families.pop(i-1)
+     #                     eaten_bacteria = sizes.pop(i-1)
+     #                     i -= 1
+     #                     sizes[i] += eaten_bacteria
+     #                     eaten = True
+     #                # right needs to be removed
+     #                elif size > right_size:
+     #                     families.pop(i+1)
+     #                     eaten_bacteria = sizes.pop(i+1)
+     #                     sizes[i] += eaten_bacteria 
+     #                     eaten = True
+     #           elif left and culture != left:
+     #                # left needs to be removed
+     #                if size > left_size:
+     #                     families.pop(i-1)
+     #                     eaten_bacteria = sizes.pop(i-1)
+     #                     i -= 1
+     #                     sizes[i] += eaten_bacteria
+     #                     eaten = True
+     #           elif right and culture != right:
+     #                # right needs to be removed
+     #                if size > right_size:
+     #                     families.pop(i+1)
+     #                     eaten_bacteria = sizes.pop(i+1)
+     #                     sizes[i] += eaten_bacteria
+     #                     eaten = True
+               
+     #           if not eaten:
+     #                i+=1
+               
+     # max_culture_i = sizes.index(max(sizes))
+     # max_size = sizes[max_culture_i]
+     # max_culture = families[max_culture_i]
+     # return f"{max_culture} {max_size}"
 
 x = solve(["green", "red", "blue", "yellow"], [5,6,7,5])
 print(x)
