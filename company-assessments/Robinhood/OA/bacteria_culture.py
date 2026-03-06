@@ -82,19 +82,19 @@ def solve(families: List[str], sizes: List[int]) -> str:
      eaten = True
      while eaten:
           eaten = False
-          new_families = []
-          new_sizes = []
           i = 0
-          while i < len(families):
+          while len(families) > 1 and i < len(families):
                culture = families[i]
                size = sizes[i]
                
                if i == 0:
-                    left = None   
+                    left = None
+                    left_size = None 
                     right = families[i+1]
                     right_size = sizes[i+1]
                elif i == len(families)-1:
                     right = None
+                    right_size = None
                     left = families[i-1]
                     left_size = sizes[i-1]
                else:
@@ -102,35 +102,193 @@ def solve(families: List[str], sizes: List[int]) -> str:
                     left_size = sizes[i-1]
                     right = families[i+1]
                     right_size = sizes[i+1]
-               if left and culture != left and right and culture != right:
+               
+               if left is not None and culture != left and right is not None and culture != right:
                     # left needs to be removed
                     if (size > left_size and size > right_size) or size > left_size:
                          families.pop(i-1)
-                         sizes.pop(i-1)
+                         eaten_bacteria = sizes.pop(i-1)
+                         i -= 1
+                         sizes[i] += eaten_bacteria
                          eaten = True
                     # right needs to be removed
                     elif size > right_size:
                          families.pop(i+1)
-                         sizes.pop(i+1)
+                         eaten_bacteria = sizes.pop(i+1)
+                         sizes[i] += eaten_bacteria 
                          eaten = True
                elif left and culture != left:
-                    # left needs to be remove
+                    # left needs to be removed
                     if size > left_size:
                          families.pop(i-1)
-                         sizes.pop(i-1)
+                         eaten_bacteria = sizes.pop(i-1)
+                         i -= 1
+                         sizes[i] += eaten_bacteria
                          eaten = True
                elif right and culture != right:
                     # right needs to be removed
                     if size > right_size:
                          families.pop(i+1)
-                         sizes.pop(i+1)
+                         eaten_bacteria = sizes.pop(i+1)
+                         sizes[i] += eaten_bacteria
                          eaten = True
-                    
+               
+               if not eaten:
+                    i+=1
                
      max_culture_i = sizes.index(max(sizes))
      max_size = sizes[max_culture_i]
      max_culture = families[max_culture_i]
      return f"{max_culture} {max_size}"
+
+x = solve(["green", "red", "blue", "yellow"], [5,6,7,5])
+print(x)
+
+def test_case_1():
+    families = ["A", "B", "C", "D"]
+    sizes = [5, 3, 7, 2]
+
+    # Simulation:
+    # A(5) B(3) C(7) D(2)
+
+    # Round 1
+    # A eats B -> A(8)
+    # Line: A(8) C(7) D(2)
+
+    # Continue scanning
+    # A(8) eats C(7) -> A(15)
+    # Line: A(15) D(2)
+
+    # A(15) eats D(2) -> A(17)
+    # Line: A(17)
+
+    expected = "A 17"
+
+    assert solve(families, sizes) == expected
+
+test_case_1()
+
+def test_case_2():
+    families = ["A", "B", "A"]
+    sizes = [4, 2, 3]
+
+    # A(4) B(2) A(3)
+    # A(4) eats B(2) -> A(6)
+    # Line: A(6) A(3)
+    # Same family → cannot eat
+
+    expected = "A 6"
+    assert solve(families, sizes) == expected
+
+
+def test_case_3():
+    families = ["A", "B", "C"]
+    sizes = [2, 5, 3]
+
+    # A(2) B(5) C(3)
+    # B(5) eats A(2) -> B(7)
+    # Line: B(7) C(3)
+    # B(7) eats C(3) -> B(10)
+
+    expected = "B 10"
+    assert solve(families, sizes) == expected
+
+
+def test_case_4():
+    families = ["A", "B", "C", "D"]
+    sizes = [3, 6, 2, 5]
+
+    # A(3) B(6) C(2) D(5)
+
+    # B(6) eats A(3) -> B(9)
+    # Line: B(9) C(2) D(5)
+
+    # B(9) eats C(2) -> B(11)
+    # Line: B(11) D(5)
+
+    # B(11) eats D(5) -> B(16)
+
+    expected = "B 16"
+    assert solve(families, sizes) == expected
+    
+    
+def test_case_5():
+    families = ["A", "B", "C"]
+    sizes = [5, 2, 4]
+
+    # A(5) B(2) C(4)
+    # A eats B -> A(7)
+    # A eats C -> A(11)
+
+    expected = "A 11"
+    assert solve(families, sizes) == expected
+
+
+def test_case_6():
+    families = ["A", "B", "C"]
+    sizes = [2, 6, 3]
+
+    # A(2) B(6) C(3)
+    # B eats A -> B(8)
+    # B eats C -> B(11)
+
+    expected = "B 11"
+    assert solve(families, sizes) == expected
+
+
+def test_case_7():
+    families = ["A", "A", "B"]
+    sizes = [5, 3, 4]
+
+    # A(5) A(3) B(4)
+    # A cannot eat A
+    # B eats A(3) -> B(7)
+    # Line: A(5) B(7)
+    # B eats A -> B(12)
+
+    expected = "B 12"
+    assert solve(families, sizes) == expected
+
+
+def test_case_8():
+    families = ["A", "B", "C", "A"]
+    sizes = [3, 4, 2, 6]
+
+    # A(3) B(4) C(2) A(6)
+    # B eats A -> B(7)
+    # Line: B(7) C(2) A(6)
+    # B eats C -> B(9)
+    # Line: B(9) A(6)
+    # B eats A -> B(15)
+
+    expected = "B 15"
+    assert solve(families, sizes) == expected
+
+
+def test_case_9():
+    families = ["A", "B", "C", "D"]
+    sizes = [1, 2, 3, 4]
+
+    # A(1) B(2) C(3) D(4)
+    # No bacterium has a smaller neighbor
+
+    expected = "D 4"
+    assert solve(families, sizes) == expected
+
+
+def test_case_10():
+    families = ["A", "B", "C", "B"]
+    sizes = [5, 3, 4, 2]
+
+    # A(5) B(3) C(4) B(2)
+    # A eats B(3) -> A(8)
+    # Line: A(8) C(4) B(2)
+    # A eats C(4) -> A(12)
+    # Line: A(12) B(2)
+    # A eats B(2) -> A(14)
+
+    expected = "A 14"
+    assert solve(families, sizes) == expected
 # def solve(families: List[str], sizes: List[int]) -> str:
 #      eaten = True
 #      while eaten:
