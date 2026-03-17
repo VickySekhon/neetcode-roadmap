@@ -15,4 +15,6 @@
 
 ## Days off!: 11 months 27 days I have to get back to it : (
 
+## Focus on problems like: Strings, Graphs (BST and DFS), 2D-Arrays
+
 ## Highest streak: 2 day(s)
