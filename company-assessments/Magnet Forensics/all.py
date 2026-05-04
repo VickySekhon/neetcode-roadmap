@@ -120,7 +120,6 @@ class LinkedList:
             self.head = Node(value)
             return
 
-        curr = self.head
         while curr.next:
             curr = curr.next
         curr.next = Node(value)
@@ -189,6 +188,17 @@ def merge(left, right):
           new_node.next = right
      
      return new_head.next
+ 
+def reverse_linked_list(head):
+     prev = None
+     curr = head
+     while curr:
+         _next = curr.next
+         curr.next = prev
+         prev = curr
+         curr = _next
+     self.head = prev
+     return prev
 
 
 def test_sort_linked_list():
