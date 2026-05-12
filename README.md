@@ -13,8 +13,8 @@
   ### ```Binary Search: 0```
   ### ```Sliding Window: 0```
 
-## Days off!: 13 months 22 days I have to get back to it : (
+## Days off!:
 
 ## Focus on problems like: Strings, Graphs (BST and DFS), 2D-Arrays, Greedy
 
-## Highest streak: 2 day(s)
+## Highest streak:
