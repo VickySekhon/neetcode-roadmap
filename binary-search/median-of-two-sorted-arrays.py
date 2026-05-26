@@ -58,7 +58,8 @@ class Solution:
             a_left_max = -float('inf')
           else:
             a_left_max = nums1[i-1]
-          
+
+          # Reduce implementation to check right side
           if j <= 0:
             b_left_max = -float('inf')
           else:
